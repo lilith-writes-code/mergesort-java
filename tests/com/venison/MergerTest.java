@@ -101,6 +101,16 @@ public class MergerTest {
 
     }
 
+    @Test
+    public void normalSortDoesntBlowStack() throws Exception {
+        int[] unsorted = new int[100000000];
+        Random rando = new Random();
+        for(int i=0; i<unsorted.length; i++){
+            unsorted[i] = rando.nextInt();
+        }
+        Arrays.sort(unsorted);
+    }
+
     private void printArray(String name, int[] array) {
         System.out.println(name);
         for (int anArray : array) {
