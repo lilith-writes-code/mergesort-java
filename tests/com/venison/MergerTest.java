@@ -2,6 +2,7 @@ package com.venison;
 
 import org.junit.Test;
 
+import java.io.Console;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -59,35 +60,54 @@ public class MergerTest {
         assertEquals(6, actual[2]);
     }
 
-//    @Test
-//    public void sort_unsortedFourItemReturnsSortedSet() throws Exception {
-//        Merger testObj = new Merger();
-//
-//        int[] actual = testObj.sort(new int[]{6, 5, 3, 9});
-//
-//        assertEquals(3, actual[0]);
-//        assertEquals(5, actual[1]);
-//        assertEquals(6, actual[2]);
-//        assertEquals(9, actual[3]);
-//    }
-//
-//    @Test
-//    public void sort_unsortedManyItemReturnsSortedSet() throws Exception {
-//        Merger testObj = new Merger();
-//        int[] unsorted = new int[6];
-//        Random rando = new Random();
-//        for(int i=0; i<unsorted.length; i++){
-//            unsorted[i] = rando.nextInt();
-//        }
-//        int[] copy = Arrays.copyOf(unsorted, unsorted.length);
-//        Arrays.sort(copy);
-//        int[] actual = testObj.sort(unsorted);
-//
-//        assertArrayEquals(copy, actual);
-//
-//    }
+    @Test
+    public void sort_GivenLastElementIsGreatestValue_ItemReturnsSortedSet() throws Exception {
+        Merger testObj = new Merger();
 
+        int[] actual = testObj.sort(new int[]{6, 5, 7});
 
+        assertEquals(5, actual[0]);
+        assertEquals(6, actual[1]);
+        assertEquals(7, actual[2]);
+    }
+
+    @Test
+    public void sort_unsortedFourItemReturnsSortedSet() throws Exception {
+        Merger testObj = new Merger();
+
+        int[] actual = testObj.sort(new int[]{6, 5, 3, 9});
+
+        assertEquals(3, actual[0]);
+        assertEquals(5, actual[1]);
+        assertEquals(6, actual[2]);
+        assertEquals(9, actual[3]);
+    }
+
+    @Test
+    public void sort_unsortedManyItemReturnsSortedSet() throws Exception {
+        Merger testObj = new Merger();
+        int[] unsorted = new int[5200];
+        Random rando = new Random();
+        for(int i=0; i<unsorted.length; i++){
+            unsorted[i] = rando.nextInt();
+        }
+        int[] copy = Arrays.copyOf(unsorted, unsorted.length);
+        Arrays.sort(copy);
+        int[] actual = testObj.sort(unsorted);
+
+//        printArray("Copy", copy);
+//        printArray("Actual", actual);
+        assertArrayEquals(copy, actual);
+
+    }
+
+    private void printArray(String name, int[] array) {
+        System.out.println(name);
+        for (int anArray : array) {
+            System.out.println(anArray);
+        }
+        System.out.println("\n");
+    }
 
 
 }
