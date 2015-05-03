@@ -11,7 +11,9 @@ public class Merger {
         }
 
         if(unsorted[0] > unsorted[1]){
-            return new int[]{unsorted[1], unsorted[0]};
+            int tmp = unsorted[0];
+            unsorted[0] = unsorted[1];
+            unsorted[1] = tmp;
         }
         return unsorted;
     }
