@@ -6,14 +6,17 @@ public class Merger {
             return null;
         }
 
-        if(unsorted.length == 1){
+        int upperBounds  = unsorted.length-1;
+        int lowerBounds = 0;
+
+        if(upperBounds == 0){
             return unsorted;
         }
 
-        if(unsorted[0] > unsorted[1]){
-            int tmp = unsorted[0];
-            unsorted[0] = unsorted[1];
-            unsorted[1] = tmp;
+        if(unsorted[lowerBounds] > unsorted[upperBounds]){
+            int tmp = unsorted[lowerBounds];
+            unsorted[lowerBounds] = unsorted[upperBounds];
+            unsorted[upperBounds] = tmp;
         }
         return unsorted;
     }
